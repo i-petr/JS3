@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JS3
+        </title>
+        <style>
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            button {
+                display: flex;
+                position: absolute;
+                left: 47.5%;
+                bottom: 40%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="text">Давай сыиграем!</div>
+        <button onclick="getDicePlaying()">Нажми</button>
+    </body>
+    <script>
+        function getRandom(num) {
+            let number = Math.ceil(Math.random() * num)
+            return number
+        }
+ 
+        let i = 0
+        function getDicePlaying() {
+            i += 1
+            let diceNumber = [getRandom(6), getRandom(6)]
+            let moiElement = document.getElementById("text")
+            moiElement.innerHTML = `Количество попыток ${i}. Выпало ${diceNumber[0]} и ${diceNumber[1]}.`
+            if (diceNumber[0] === diceNumber[1]) {
+                alert("Удача")
+            } 
+        }
+    </script>
+</html>

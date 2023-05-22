@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JS3
+        </title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            div {
+                display: flex;
+                position: absolute;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100%;
+            }
+
+            p {
+                display: flex;
+                position: absolute;
+                align-items: center;
+                justify-content: center;
+                font-family: cursive;
+                font-size: 19px;
+                height: 100vh;
+                width: 100%;
+                color: white;
+            }
+
+            
+             
+
+            button {
+                display: flex;
+                position: absolute;
+                font-family: cursive;
+                font-size: 19px;
+                text-decoration: none;
+                height: 30px;
+                width: 167px;
+                text-align: center;
+                bottom: 5%;
+                left: 45.6%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/2178/2178261.png" alt="ball" />
+        </div>
+        <p id="magic-ball"></p>
+        <button onclick="getMagic()">Нажми на менЯ!</button>
+        </body>
+    <script>
+        function getRandom(num) {
+            let number = Math.round(Math.random() * num)
+            return number
+        }
+
+        let magicBall = [
+            "Ну вот точно! Никаких сомнений",
+            "Мне кажется да",
+            "Сконцентрируйся и спроси опять",
+            "Даже не думай",
+        ]
+        
+        function getMagic() {
+            let numberRandom = getRandom(3)
+            let nameElement = document.getElementById("magic-ball")
+            nameElement.innerHTML = magicBall[numberRandom]
+        }
+        
+        
+    </script>
+</html>

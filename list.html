@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS3</title>
+  </head>
+  <body>
+    <div>
+      <h1>Список покупок</h1>
+      <ul id="list">
+        <li>Молоко</li>
+        <li>Сок</li>
+        <li>Хлеб</li>
+      </ul>
+      <input type="text" id="inputValue">
+    </div>
+    <div>
+      <button id="addButton">Добавить</button>
+      <button id="deleteButton">Удалить</button>
+    </div>
+  </body>
+  <script>
+    const list = document.getElementById('list');
+    const addButton = document.getElementById('addButton');
+    const deleteButton = document.getElementById('deleteButton');
+    const inputValue = document.getElementById('inputValue');
+
+    addButton.addEventListener('click', addItem);
+    deleteButton.addEventListener('click', deleteItem);
+
+    function addItem() {
+      const value = inputValue.value.trim();
+      if (value !== '') {
+        const newItem = document.createElement('li');
+        newItem.textContent = value;
+        list.appendChild(newItem);
+        inputValue.value = '';
+      }
+    }
+
+    function deleteItem() {
+      const selectedItems = list.querySelectorAll('li.selected');
+      selectedItems.forEach(item => item.remove());
+    }
+
+    list.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.nodeName === 'LI') {
+        target.classList.toggle('selected');
+      }
+    });
+  </script>
+</html>
+
