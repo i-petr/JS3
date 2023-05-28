@@ -3,3 +3,5 @@ https://i-petr.github.io/JS3/magic_ball.html
 https://i-petr.github.io/JS3/dice_playing.html
 <br>
 https://i-petr.github.io/JS3/list.html
+<br>
+https://i-petr.github.io/JS3/Cookie_Clicker.html
