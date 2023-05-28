@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <style>
+            img {
+                position: absolute;
+                width: 314px;
+                height: 314px;
+                left: 54px;
+                top: 138px;
+                background: url(image.png);
+            }
+
+            h1 {
+                position: absolute;
+                width: 323px;
+                height: 39px;
+                left: 54px;
+                top: 69px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 39px;
+                color: #000000;
+            }
+
+            p {
+                position: absolute;
+                width: 126px;
+                height: 39px;
+                left: 456px;
+                top: 218px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 39px;
+                color: #000000;
+            }
+
+            .score {
+                position: absolute;
+                width: 35px;
+                height: 39px;
+                left: 646px;
+                top: 218px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 39px;
+                color: #000000;
+            }
+
+            button {
+                position: absolute;
+                width: 133px;
+                height: 41px;
+                left: 456px;
+                top: 314px;
+                background: #35BF05;
+                border-radius: 5px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 24px;
+                color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Кликай печеньку!</h1>
+            <img id = "element" src="https://www.game-ost.ru/static/covers_soundtracks/3/3/339970_399701.jpg" alt="cookie" />
+        </div>
+        <div>
+            <p>Монеты</p>
+            <p id="score" class="score"></p>
+            <button id ="newUpgrade">Upgrade</button>
+        </div>
+    </body>
+    <script>
+        let addScore = document.getElementById('element')
+        let totalScore = document.getElementById('score').innerHTML = 0
+        let upgradeScore = document.getElementById('newUpgrade')
+        let number = 1
+
+        function getAddScore() {
+            let sum = totalScore + number
+            if (sum === 10) {
+                upgradeScore.addEventListener('click', getUpgradeAddScore)
+            }
+
+            return totalScore = document.getElementById('score').innerHTML = sum
+        }
+
+        
+
+        function getUpgradeAddScore() {
+            number += 1
+            if (number > 2) {
+                number = 2
+            }
+            return number
+        }        
+
+        addScore.addEventListener('click', getAddScore)
+
+    </script>
+</html>
