@@ -2,14 +2,34 @@
 <html>
   <head>
     <title>JS3</title>
+    <style>
+      input[type = checkbox] {
+        display: flex;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column
+      }
+
+      li {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      li:before {
+        content: "\2022";
+        margin-right: 5px;
+      }
+    </style>
   </head>
   <body>
     <div>
       <h1>Список покупок</h1>
       <ul id="list">
-        <li>Молоко</li>
-        <li>Сок</li>
-        <li>Хлеб</li>
+        <li>Молоко<input type='checkbox'></li>
+        <li>Сок<input type='checkbox'></li>
+        <li>Хлеб<input type='checkbox'></li>
       </ul>
       <input type="text" id="inputValue">
     </div>
@@ -25,29 +45,37 @@
     const inputValue = document.getElementById('inputValue');
 
     addButton.addEventListener('click', addItem);
-    deleteButton.addEventListener('click', deleteItem);
+    deleteButton.addEventListener('click', deleteSelectedItems);
 
     function addItem() {
       const value = inputValue.value.trim();
+      let ulElement = document.getElementById('list')
       if (value !== '') {
         const newItem = document.createElement('li');
-        newItem.textContent = value;
+        newItem.innerHTML = value + "<input type='checkbox'>";
         list.appendChild(newItem);
         inputValue.value = '';
       }
     }
 
-    function deleteItem() {
-      const selectedItems = list.querySelectorAll('li.selected');
-      selectedItems.forEach(item => item.remove());
+    function deleteSelectedItems() {
+      const selectedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      if (selectedCheckboxes.length > 0) {
+        selectedCheckboxes.forEach((checkbox) => {
+          const checkboxItem = checkbox.closest('li');
+          checkboxItem.remove(); // Удаляет элемент <li>
+        });
+      }
     }
 
-    list.addEventListener('click', (event) => {
-      const target = event.target;
-      if (target.nodeName === 'LI') {
-        target.classList.toggle('selected');
-      }
-    });
+    function changeList () {
+      let list = document.querySelector("li")
+      list.classList.toggle("selected")
+    }
+
+    document.getElementById('deleteButton').addEventListener('click', deleteItem);
+    
+    
   </script>
 </html>
 
