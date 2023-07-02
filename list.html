@@ -27,9 +27,9 @@
     <div>
       <h1>Список покупок</h1>
       <ul id="list">
-        <li>Молоко<input type='checkbox'></li>
-        <li>Сок<input type='checkbox'></li>
-        <li>Хлеб<input type='checkbox'></li>
+        <li><input type='checkbox'>Молоко</li>
+        <li><input type='checkbox'>Сок</li>
+        <li><input type='checkbox'>Хлеб</li>
       </ul>
       <input type="text" id="inputValue">
     </div>
@@ -49,13 +49,14 @@
 
     function addItem() {
       const value = inputValue.value.trim();
-      let ulElement = document.getElementById('list')
       if (value !== '') {
         const newItem = document.createElement('li');
-        newItem.innerHTML = value + "<input type='checkbox'>";
+        newItem.innerHTML = "<input type='checkbox'>" + value;
         list.appendChild(newItem);
         inputValue.value = '';
       }
+      let dataText = JSON.parse(value)
+      console.log(dataText)
     }
 
     function deleteSelectedItems() {
@@ -68,14 +69,23 @@
       }
     }
 
-    function changeList () {
-      let list = document.querySelector("li")
-      list.classList.toggle("selected")
-    }
+    // let items = [];
 
-    document.getElementById('deleteButton').addEventListener('click', deleteItem);
-    
-    
+    // for (let i = 0; i < list.children.length; i++) {
+    //   let li = list.children[i];
+    //   items.push(li.textContent);
+    // }
+
+    // localStorage.setItem('items', JSON.stringify(items));
+
+    // const item = localStorage.getItem('items') || [];
+
+    // if (items) {
+    //   list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    // }
+
+    //let getLi = document.querySelector("ul")
+    //console.log(list.innerText)
   </script>
 </html>
 
