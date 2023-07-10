@@ -43,6 +43,7 @@
     const addButton = document.getElementById('addButton');
     const deleteButton = document.getElementById('deleteButton');
     const inputValue = document.getElementById('inputValue');
+    let dataAdd = ""
 
     addButton.addEventListener('click', addItem);
     deleteButton.addEventListener('click', deleteSelectedItems);
@@ -55,9 +56,9 @@
         list.appendChild(newItem);
         inputValue.value = '';
       }
-      let dataText = JSON.parse(value)
-      console.log(dataText)
     }
+
+    //console.log(dataLocalStorage)
 
     function deleteSelectedItems() {
       const selectedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -67,25 +68,17 @@
           checkboxItem.remove(); // Удаляет элемент <li>
         });
       }
+
+      dataAdd = list.innerText
+      const dataLocalStorage = dataAdd.split(["\n"])
+      console.log(dataAdd)
+      console.log(dataLocalStorage)
     }
-
-    // let items = [];
-
-    // for (let i = 0; i < list.children.length; i++) {
-    //   let li = list.children[i];
-    //   items.push(li.textContent);
-    // }
-
-    // localStorage.setItem('items', JSON.stringify(items));
-
-    // const item = localStorage.getItem('items') || [];
-
-    // if (items) {
-    //   list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
-    // }
-
-    //let getLi = document.querySelector("ul")
-    //console.log(list.innerText)
+    
+    
+    
+    
+    
   </script>
 </html>
 
